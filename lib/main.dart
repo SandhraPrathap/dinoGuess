@@ -1,3 +1,4 @@
+import 'package:dinoguess/instructions.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -5,17 +6,20 @@ void main() {
   runApp(MaterialApp(home: DinoGuess()));
 }
 
-void rand() {
-  Random random = new Random();
-  int randomNumber = random.nextInt(100);
-}
-
 class DinoGuess extends StatefulWidget {
   @override
   _DinoGuessState createState() => _DinoGuessState();
 }
 
+int randomNumber = 0;
+
 class _DinoGuessState extends State<DinoGuess> {
+  void rand() {
+    Random random = new Random();
+    int _randomNumber = random.nextInt(100);
+  }
+
+  TextEditingController guess = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,8 +67,10 @@ class _DinoGuessState extends State<DinoGuess> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.5,
+                height: 80,
                 child: TextFormField(
-                  style: TextStyle(fontSize: 95, fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 80, fontWeight: FontWeight.w300),
+                  controller: guess,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
                       border: UnderlineInputBorder(
@@ -75,7 +81,18 @@ class _DinoGuessState extends State<DinoGuess> {
               Column(
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      rand();
+                      if (guess.value == 13) {
+                        print(guess.value);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Instructions(),
+                          ),
+                        );
+                      }
+                    },
                     child: Container(
                       height: 80,
                       decoration: BoxDecoration(
@@ -87,7 +104,14 @@ class _DinoGuessState extends State<DinoGuess> {
                   ),
                   SizedBox(height: 10),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Instructions(),
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 75,
                       decoration: BoxDecoration(
