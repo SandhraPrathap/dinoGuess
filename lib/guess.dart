@@ -3,6 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class guessScreen extends StatefulWidget {
+  final int guess;
+  final int target;
+
+  const guessScreen({Key? key, required this.guess, required this.target})
+      : super(key: key);
   @override
   _guessScreenState createState() => _guessScreenState();
 }
@@ -31,12 +36,12 @@ class _guessScreenState extends State<guessScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            (main.b > int.parse(main.guess.text))
+            (widget.target > widget.guess)
                 ? Text(
                     "You guessed Low",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   )
-                : (main.b < int.parse(main.guess.text))
+                : (widget.target < widget.guess)
                     ? Text(
                         "You guessed high",
                         style: TextStyle(

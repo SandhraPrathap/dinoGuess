@@ -81,10 +81,14 @@ class _DinoGuessState extends State<DinoGuess> {
                       suffixIcon: IconButton(
                         icon: Icon(Icons.check),
                         onPressed: () {
+                          int g = int.parse(guess.text);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => guessScreen()));
+                                  builder: (context) => guessScreen(
+                                        guess: g,
+                                        target: b,
+                                      )));
                         },
                       ),
                       labelText: ''),
