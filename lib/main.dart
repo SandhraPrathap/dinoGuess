@@ -1,3 +1,4 @@
+import 'package:dinoguess/guess.dart';
 import 'package:dinoguess/instructions.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -6,20 +7,22 @@ void main() {
   runApp(MaterialApp(home: DinoGuess()));
 }
 
+int rand() {
+  Random random = new Random();
+  int blah = random.nextInt(100);
+  return blah;
+}
+
+int b = rand();
+TextEditingController guess = TextEditingController();
+
 class DinoGuess extends StatefulWidget {
   @override
   _DinoGuessState createState() => _DinoGuessState();
 }
 
-int randomNumber = 0;
-
 class _DinoGuessState extends State<DinoGuess> {
-  void rand() {
-    Random random = new Random();
-    int _randomNumber = random.nextInt(100);
-  }
-
-  TextEditingController guess = TextEditingController();
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +78,15 @@ class _DinoGuessState extends State<DinoGuess> {
                   decoration: InputDecoration(
                       border: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white)),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.check),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => guessScreen()));
+                        },
+                      ),
                       labelText: ''),
                 ),
               ),
@@ -83,8 +95,7 @@ class _DinoGuessState extends State<DinoGuess> {
                   GestureDetector(
                     onTap: () {
                       rand();
-                      if (guess.value == 13) {
-                        print(guess.value);
+                      if (int.parse(guess.text) == b) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(

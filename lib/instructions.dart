@@ -37,7 +37,7 @@ class Instructions extends StatelessWidget {
                     ),
                     child: IconButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pop(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DinoGuess(),
