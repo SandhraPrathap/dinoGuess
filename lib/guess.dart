@@ -33,41 +33,68 @@ class _guessScreenState extends State<guessScreen> {
               Color.fromRGBO(21, 175, 166, 100),
               Color.fromRGBO(44, 91, 89, 100),
             ])),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            (widget.target > widget.guess)
-                ? Text(
-                    "You guessed Low",
+        child: (widget.target == widget.guess)
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Heyyaaaaaaaaaa....You guessed right",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  )
-                : (widget.target < widget.guess)
-                    ? Text(
-                        "You guessed high",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      )
-                    : Text(
-                        "Heyyaaaaaaaaaa....You guessed right",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-            IconButton(
-              onPressed: () {
-                Navigator.pop(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => main.DinoGuess(),
                   ),
-                );
-                ;
-              },
-              icon: Icon(Icons.refresh_outlined),
-              iconSize: 30,
-              color: Colors.white,
-            ),
-          ],
-        ),
+                  Container(
+                      height: MediaQuery.of(context).size.width * 0.10,
+                      width: MediaQuery.of(context).size.width * 0.30,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.rectangle,
+                        border: Border.all(color: Colors.black, width: 4),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: TextButton(
+                          onPressed: () {
+                            main.a = 0;
+                            Navigator.pop(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => main.DinoGuess(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Play Again",
+                            style: TextStyle(color: Colors.black, fontSize: 20),
+                          ))),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  (widget.target > widget.guess)
+                      ? Text(
+                          "You guessed Low",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          "You guessed high",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => main.DinoGuess(),
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.refresh_outlined),
+                    iconSize: 30,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
       ),
     );
   }
