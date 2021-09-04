@@ -34,37 +34,47 @@ class _guessScreenState extends State<guessScreen> {
               Color.fromRGBO(44, 91, 89, 100),
             ])),
         child: (widget.target == widget.guess)
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Heyyaaaaaaaaaa....You guessed right",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                      height: MediaQuery.of(context).size.width * 0.10,
-                      width: MediaQuery.of(context).size.width * 0.30,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.rectangle,
-                        border: Border.all(color: Colors.black, width: 4),
-                        borderRadius: BorderRadius.circular(25),
+            ? Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Heyyaaaaaaaaaa....You guessed right",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
                       ),
-                      child: TextButton(
-                          onPressed: () {
-                            main.a = 0;
-                            Navigator.pop(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => main.DinoGuess(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Play Again",
-                            style: TextStyle(color: Colors.black, fontSize: 20),
-                          ))),
-                ],
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                          height: MediaQuery.of(context).size.width * 0.10,
+                          width: MediaQuery.of(context).size.width * 0.30,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.rectangle,
+                            border: Border.all(color: Colors.black, width: 4),
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: TextButton(
+                              onPressed: () {
+                                main.a = 0;
+                                Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => main.DinoGuess(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Play Again",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ))),
+                    ],
+                  ),
+                ),
               )
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,

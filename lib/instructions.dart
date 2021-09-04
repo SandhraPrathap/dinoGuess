@@ -43,7 +43,6 @@ class Instructions extends StatelessWidget {
                             builder: (context) => DinoGuess(),
                           ),
                         );
-                        ;
                       },
                       icon: Icon(Icons.arrow_back),
                       iconSize: 30,

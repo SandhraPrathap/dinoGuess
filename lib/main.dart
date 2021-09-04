@@ -1,9 +1,11 @@
 import 'package:dinoguess/guess.dart';
 import 'package:dinoguess/instructions.dart';
+import 'package:dinoguess/hint.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 int a = 0;
+int n = 0;
 void main() {
   runApp(MaterialApp(home: DinoGuess()));
 }
@@ -136,15 +138,14 @@ class _DinoGuessState extends State<DinoGuess> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      rand();
-                      if (int.parse(guess.text) == b) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Instructions(),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HintScreen(
+                            target: b,
                           ),
-                        );
-                      }
+                        ),
+                      );
                     },
                     child: Container(
                       height: 80,
