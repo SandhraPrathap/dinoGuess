@@ -26,7 +26,6 @@ class DinoGuess extends StatefulWidget {
 
 class _DinoGuessState extends State<DinoGuess> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -86,8 +85,18 @@ class _DinoGuessState extends State<DinoGuess> {
                             style: TextStyle(
                                 fontSize: 80, fontWeight: FontWeight.w300),
                             controller: guess,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
+                            onFieldSubmitted: (value) {
+                              int g = int.parse(guess.text);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => guessScreen(
+                                            guess: g,
+                                            target: b,
+                                          )));
+                            },
+                            validator: (guess) {
+                              if (guess == null || guess.isEmpty) {
                                 return 'Please enter some text';
                               }
                               return null;

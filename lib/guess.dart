@@ -59,6 +59,7 @@ class _guessScreenState extends State<guessScreen> {
                           ),
                           child: TextButton(
                               onPressed: () {
+                                main.guess.clear();
                                 main.a = 0;
                                 Navigator.pop(
                                   context,
@@ -70,7 +71,7 @@ class _guessScreenState extends State<guessScreen> {
                               child: Text(
                                 "Play Again",
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 20),
+                                    color: Colors.black, fontSize: 10),
                               ))),
                     ],
                   ),
@@ -92,6 +93,7 @@ class _guessScreenState extends State<guessScreen> {
                         ),
                   IconButton(
                     onPressed: () {
+                      main.guess.clear();
                       Navigator.pop(
                         context,
                         MaterialPageRoute(
