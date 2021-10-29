@@ -1,6 +1,6 @@
 # dinoguess
 
-A new Flutter project.
+Dare to guess the correct number?
 
 ## Getting Started
 
